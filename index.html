@@ -1,111 +1,296 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAK UPS Power Solutions</title>
+<title>MAK UPS Power Solutions | Inverters, Batteries & Online UPS</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#17243a}
-header{background:#082b55;color:white;padding:24px 16px;text-align:center}
-header h1{margin:0;font-size:25px}
-header p{color:#d7eaff}
-nav{background:#064786;padding:13px;text-align:center}
-nav a{color:white;text-decoration:none;margin:0 9px;font-size:14px}
-.hero{background:linear-gradient(120deg,#07366b,#0879c9);color:white;padding:48px 20px;text-align:center}
-.hero h2{font-size:30px;margin:0 0 12px}
-.hero p{line-height:1.6}
-.btn{display:inline-block;background:#ffb52e;color:#17243a;padding:13px 22px;border-radius:7px;text-decoration:none;font-weight:bold;margin-top:12px}
-section{padding:28px 16px;max-width:950px;margin:auto}
-h2.section-title{text-align:center;color:#07366b}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
-.card{background:white;padding:20px 14px;border-radius:12px;text-align:center;box-shadow:0 2px 10px #00000012}
-.card h3{color:#07549a}
-.card p{font-size:14px;line-height:1.5}
-.price{font-weight:bold;color:#087044}
-.info{background:white;border-radius:12px;padding:20px;line-height:1.7}
-footer{background:#082b55;color:white;text-align:center;padding:22px;font-size:14px}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#f4f7fb;color:#17243a}
+
+/* Header & Navigation */
+header{background:#082b55;color:white;padding:20px 16px;text-align:center;border-bottom:3px solid #ffb52e}
+.logo-container img{max-height:60px;width:auto}
+nav{background:#064786;padding:12px 10px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.15);white-space:nowrap;overflow-x:auto}
+nav a{color:white;text-decoration:none;margin:0 10px;font-size:14px;font-weight:bold;transition:color 0.2s}
+nav a:hover{color:#ffb52e}
+
+/* Hero Section with Banner */
+.hero{background:linear-gradient(125deg,#07366b,#0879c9);color:white;padding:40px 20px;text-align:center}
+.hero-banner{max-width:100%;height:auto;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,0.3);margin-bottom:20px;border:2px solid rgba(255,255,255,0.1)}
+.hero h2{font-size:28px;margin:10px 0 10px}
+.hero p{line-height:1.6;margin:6px 0;font-size:15px;color:#e6f2ff}
+.btn{display:inline-block;background:#ffb52e;color:#17243a;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:bold;margin:12px 6px 0;border:none;cursor:pointer;font-size:14px;transition:transform 0.15s,background 0.2s}
+.btn:hover{background:#ffa500;transform:translateY(-1px)}
+.btn-outline{background:white;color:#07366b}
+.btn-outline:hover{background:#f0f7ff}
+.btn-sm{padding:9px 16px;font-size:13px;margin-top:12px;width:100%}
+
+/* Layout & Cards */
+section{padding:32px 16px;max-width:980px;margin:auto}
+h2.section-title{text-align:center;color:#07366b;margin-bottom:24px;font-size:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:white;padding:16px;border-radius:12px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,0.07);display:flex;flex-direction:column;justify-content:space-between;border-top:4px solid #0879c9}
+.card-img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;border:1px solid #e2e8f0}
+.card h3{color:#07366b;margin:0 0 6px;font-size:18px}
+.card p{font-size:14px;line-height:1.5;margin:6px 0;color:#475569}
+.price{font-weight:bold;color:#087044;margin-top:8px;font-size:14px}
+.info{background:white;border-radius:12px;padding:24px;line-height:1.7;box-shadow:0 3px 12px rgba(0,0,0,0.07)}
+
+/* Services Grid */
+.service-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:16px}
+.service-item{background:#f8fafc;border:1px solid #e2e8f0;padding:14px;border-radius:8px;font-size:14px;font-weight:bold;color:#07366b}
+
+/* Form & Tracker Styles */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-weight:bold;margin-bottom:6px;font-size:14px;color:#07366b}
+.form-control{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;font-family:inherit;background:#fff}
+.form-control:focus{outline:none;border-color:#0879c9;box-shadow:0 0 0 3px rgba(8,121,201,0.15)}
+.status-box{margin-top:16px;padding:14px;border-radius:8px;display:none;font-size:14px;line-height:1.5}
+.status-success{background:#e6f4ea;color:#137333;border:1px solid #ceead6}
+.status-error{background:#fce8e6;color:#c5221f;border:1px solid #fad2cf}
+.ticket-card{background:#f8fafc;border-left:4px solid #0879c9;padding:14px;margin-top:12px;border-radius:8px;font-size:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:bold;background:#ffb52e;color:#17243a;margin-left:6px}
+
+footer{background:#082b55;color:white;text-align:center;padding:24px 16px;font-size:14px;margin-top:24px}
+footer p{margin:6px 0;color:#d7eaff}
 </style>
 </head>
 <body>
 
 <header>
-<h1>MAK UPS Power Solutions</h1>
-<p>Powering Your Business with Reliable Energy Solutions</p>
+  <!-- अपनी लोगो इमेज फाइल का नाम यहाँ दें (जैसे logo.png) -->
+  <h1>MAK UPS Power Solutions</h1>
+  <p>Powering Your Business & Home with Reliable Energy Solutions</p>
 </header>
 
 <nav>
 <a href="#home">Home</a>
 <a href="#products">Products</a>
 <a href="#services">Services</a>
+<a href="#book-service">Book Service</a>
+<a href="#track-status">Track Status</a>
 <a href="#contact">Contact</a>
 </nav>
 
 <div class="hero" id="home">
-<h2>Reliable Power Solutions</h2>
-<p>Batteries, Inverters and Online UPS Sales & Services</p>
-<p>Serving customers across Uttar Pradesh</p>
-<a class="btn" href="#products">Explore Products</a>
+  <!-- हीरो बैनर इमेज यहाँ जोड़ी गई है -->
+  <img src="banner-main.png" alt="MAK UPS Power Solutions Banner" class="hero-banner">
+  <h2>Reliable Power Backup Solutions</h2>
+  <p>Authorized Sales, Installation & Component-Level Service for Batteries, Inverters & Online UPS</p>
+  <p>Serving Gorakhpur & Customers Across Uttar Pradesh</p>
+  <a class="btn" href="#products">Explore Products</a>
+  <a class="btn btn-outline" href="#book-service">Book Service / Request Quote</a>
 </div>
 
 <section id="products">
-<h2 class="section-title">Our Products</h2>
+<h2 class="section-title">Our Products & Range</h2>
 <div class="grid">
-<div class="card">
-<h3>Exide Batteries</h3>
-<p>Exide PowerSafe, Safe Plus and other battery ranges.</p>
-<p class="price">Price on Request</p>
-</div>
-<div class="card">
-<h3>Amaron Batteries</h3>
-<p>Amaron Quanta SMF battery range.</p>
-<p class="price">Price on Request</p>
-</div>
-<div class="card">
-<h3>Online UPS</h3>
-<p>Microtek, BPE and Inlowa Online UPS systems.</p>
-<p class="price">Price on Request</p>
-</div>
-<div class="card">
-<h3>Other Batteries</h3>
-<p>Leoch and U Plus battery products.</p>
-<p class="price">Price on Request</p>
-</div>
-<div class="card">
-<h3>Inverters</h3>
-<p>Exide inverters and power backup solutions.</p>
-<p class="price">Price on Request</p>
-</div>
+  <!-- Card 1: Batteries Banner -->
+  <div class="card">
+    <div>
+      <img src="banner-batteries.png" alt="Exide & Amaron Batteries" class="card-img">
+      <h3>Exide & Amaron SMF Batteries</h3>
+      <p>Exide PowerSafe Plus, Amaron Quanta SMF VRLA batteries for high backup.</p>
+      <p class="price">Available • Price on Request</p>
+    </div>
+    <button class="btn btn-sm" onclick="selectProduct('Exide & Amaron Batteries')">Request Quote</button>
+  </div>
+
+  <!-- Card 2: Online UPS Banner -->
+  <div class="card">
+    <div>
+      <img src="banner-ups.png" alt="Microtek APC BPE Online UPS" class="card-img">
+      <h3>Microtek, APC & BPE Online UPS</h3>
+      <p>High-efficiency Single & Three-Phase Online UPS systems for critical loads.</p>
+      <p class="price">Available • Price on Request</p>
+    </div>
+    <button class="btn btn-sm" onclick="selectProduct('Online UPS Systems')">Request Quote</button>
+  </div>
 </div>
 </section>
 
 <section id="services">
-<h2 class="section-title">Our Services</h2>
+<h2 class="section-title">Our Technical Services</h2>
 <div class="info">
-<ul>
-<li>Online UPS installation and maintenance</li>
-<li>Battery inspection and replacement</li>
-<li>Inverter repair and service</li>
-<li>UPS troubleshooting and technical support</li>
-</ul>
-<p><strong>Service Area:</strong> Uttar Pradesh, India</p>
+  <div class="service-list">
+    <div class="service-item">⚡ Online UPS Installation & AMC</div>
+    <div class="service-item">🔋 Battery Health Testing & Replacement</div>
+    <div class="service-item">🛠️ Component-Level Inverter & PCB Repair</div>
+    <div class="service-item">🔧 Emergency Breakdown & Technical Support</div>
+  </div>
+  <p style="margin:0"><strong>Primary Service Hub:</strong> Padleganj, Gorakhpur & surrounding districts across Uttar Pradesh, India.</p>
+</div>
+</section>
+
+<!-- Database Form: Service Request & Quotation -->
+<section id="book-service">
+<h2 class="section-title">Book a Service or Request Quotation</h2>
+<div class="info">
+  <form id="serviceForm" onsubmit="handleFormSubmit(event)">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" id="custName" class="form-control" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label>Mobile Number *</label>
+        <input type="tel" id="custMobile" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Product / Service Category *</label>
+        <select id="productType" class="form-control" required>
+          <option value="">-- Select Product or Service --</option>
+          <option value="Exide & Amaron Batteries">Exide & Amaron Batteries</option>
+          <option value="Online UPS Systems">Online UPS Systems (Microtek / APC / BPE)</option>
+          <option value="Repair & Maintenance">Repair & Maintenance Service</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>City / Address *</label>
+        <input type="text" id="custAddress" class="form-control" placeholder="Area, City (e.g. Padleganj, Gorakhpur)" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Requirement / Issue Description *</label>
+      <textarea id="issueDesc" class="form-control" rows="3" placeholder="Tell us if you need a price quote, new installation, or repair service..." required></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn">Submit Request</button>
+  </form>
+  <div id="formResponse" class="status-box"></div>
+</div>
+</section>
+
+<!-- Database Search: Track Repair/Service Status -->
+<section id="track-status">
+<h2 class="section-title">Track Your Service / Repair Status</h2>
+<div class="info">
+  <p style="margin-top:0">अपना <strong>Ticket ID</strong> (जैसे: MAK-1234) या <strong>Mobile Number</strong> डालकर अपनी रिक्वेस्ट का लाइव स्टेटस चेक करें:</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <input type="text" id="searchInput" class="form-control" style="flex:1;min-width:220px" placeholder="Enter Ticket ID or 10-digit Mobile Number">
+    <button type="button" id="trackBtn" class="btn" style="margin-top:0" onclick="handleTrackStatus()">Check Status</button>
+  </div>
+  <div id="trackResponse" style="margin-top:16px"></div>
 </div>
 </section>
 
 <section id="contact">
 <h2 class="section-title">Contact Us</h2>
 <div class="info">
-<p>Looking for batteries, inverters or UPS solutions?</p>
-<p>Contact MAK UPS Power Solutions for product details, availability and service enquiries.</p>
-<p><strong>Pricing:</strong> Please request a quotation.</p>
+<p style="margin-top:0"><strong>MAK UPS Power Solutions</strong></p>
+<p>📍 <strong>Location:</strong> Padleganj, Gorakhpur, Uttar Pradesh</p>
+<p>Looking for industrial batteries, inverters, or Online UPS solutions? Contact us for genuine products, bulk quotations, and expert repair services.</p>
 </div>
 </section>
 
 <footer>
-<p>© 2026 MAK UPS Power Solutions</p>
-<p>Reliable Power. Trusted Service.</p>
+<p><strong>© 2026 MAK UPS Power Solutions</strong></p>
+<p>Reliable Power. Trusted Service Across Uttar Pradesh.</p>
 </footer>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydjJ5M81KNS86rRr3a-XH5b6ejr0JYZy2GeknTpUIl1-EbKnJqIMYdu3J4UEG_OR8JCA/exec";
+
+function selectProduct(productName) {
+  document.getElementById('productType').value = productName;
+  document.getElementById('book-service').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('custName').focus();
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  var respBox = document.getElementById('formResponse');
+  
+  btn.disabled = true;
+  btn.innerText = 'Submitting...';
+  respBox.style.display = 'none';
+
+  var formData = {
+    name: document.getElementById('custName').value,
+    mobile: document.getElementById('custMobile').value,
+    productType: document.getElementById('productType').value,
+    address: document.getElementById('custAddress').value,
+    issue: document.getElementById('issueDesc').value
+  };
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(formData)
+  })
+  .then(function(response) { return response.json(); })
+  .then(function(res) {
+    btn.disabled = false;
+    btn.innerText = 'Submit Request';
+    respBox.style.display = 'block';
+    if (res.success) {
+      respBox.className = 'status-box status-success';
+      respBox.innerHTML = '<strong>✅ Success!</strong> ' + res.message;
+      document.getElementById('serviceForm').reset();
+    } else {
+      respBox.className = 'status-box status-error';
+      respBox.innerText = res.message;
+    }
+  })
+  .catch(function(err) {
+    btn.disabled, btn.disabled = false;
+    btn.innerText = 'Submit Request';
+    respBox.style.display = 'block';
+    respBox.className = 'status-box status-error';
+    respBox.innerText = 'Connection Error: कृपया जांच लें।';
+  });
+}
+
+function handleTrackStatus() {
+  var query = document.getElementById('searchInput').value.trim();
+  var trackBox = document.getElementById('trackResponse');
+  var btn = document.getElementById('trackBtn');
+
+  if (!query) {
+    trackBox.innerHTML = '<div class="status-box status-error" style="display:block">कृपया अपना Ticket ID या Mobile Number डालें।</div>';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerText = 'Checking...';
+  trackBox.innerHTML = '<p>Checking database...</p>';
+
+  fetch(SCRIPT_URL + '?query=' + encodeURIComponent(query))
+  .then(function(response) { return response.json(); })
+  .then(function(res) {
+    btn.disabled = false;
+    btn.innerText = 'Check Status';
+    if (res.found) {
+      var html = '';
+      res.records.forEach(function(r) {
+        html += '<div class="ticket-card">' +
+          '<strong>Ticket ID: ' + r.ticketId + '</strong> <span class="badge">' + r.status + '</span><br>' +
+          '<strong>Customer:</strong> ' + r.name + ' | <strong>Date:</strong> ' + r.date + '<br>' +
+          '<strong>Product/Service:</strong> ' + r.product + '<br>' +
+          '<strong>Details:</strong> ' + r.issue + '<br>' +
+          '<strong>Estimate/Notes:</strong> ' + r.cost +
+          '</div>';
+      });
+      trackBox.innerHTML = html;
+    } else {
+      trackBox.innerHTML = '<div class="status-box status-error" style="display:block">' + res.message + '</div>';
+    }
+  })
+  .catch(function(err) {
+    btn.disabled = false;
+    btn.innerText = 'Check Status';
+    trackBox.innerHTML = '<div class="status-box status-error" style="display:block">Error: डेटा लोड नहीं हो सका।</div>';
+  });
+}
+</script>
 
 </body>
 </html>
